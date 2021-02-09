@@ -10,6 +10,6 @@ class PatientHelper {
       avatarInitiat = 'er';
     }
 
-    return avatarInitiat;;
+    return avatarInitiat;
   }
 }
