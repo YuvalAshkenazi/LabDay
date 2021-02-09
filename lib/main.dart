@@ -15,9 +15,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final appTitle = 'Form Validation Demo';
 
-    return NewShift();
-    //return TaskList();
-    //return MainScreen();
+    //return NewShift();
+
+    return MainScreen();
     /*return PatientPage(
       patient: Patient('NRN 3', 'Mati Caspi',
           'https://www.maariv.co.il/HttpHandlers/ShowImage.ashx?id=322703&w=500&h=380'),
