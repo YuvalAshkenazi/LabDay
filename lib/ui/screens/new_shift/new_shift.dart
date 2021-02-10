@@ -31,7 +31,7 @@ class NewShift extends StatelessWidget {
           itemBuilder: (context, index) {
             final item = PatientItem(items[index]);
 
-            return PatientCard(item);
+            return PatientStateCard(item);
           },
         ),
       );

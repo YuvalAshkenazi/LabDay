@@ -3,10 +3,19 @@ import 'package:flutter_app/bussiness_logic/models/patient.dart';
 import 'package:flutter_app/ui/screens/new_shift/patient_item.dart';
 import 'package:flutter_app/ui/screens/patients/patientPage.dart';
 
-class PatientCard extends StatelessWidget {
+class PatientStateCard extends StatefulWidget {
   PatientItem item;
+  PatientStateCard(this.item);
 
+  @override
+  PatientCard createState() => PatientCard(item);
+}
+
+class PatientCard extends State<PatientStateCard> {
+  PatientItem item;
   PatientCard(this.item);
+
+  bool _isSelectedPatient = false;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +28,10 @@ class PatientCard extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => PatientPage(
-                        patient: item.patient,
-                  )));
+                      builder: (context) =>
+                          PatientPage(
+                            patient: item.patient,
+                          )));
             },
             title: item.buildTitle(context),
             subtitle: item.buildSubtitle(context),
@@ -31,7 +41,13 @@ class PatientCard extends StatelessWidget {
               child: item.buildLeftImage(context),
             ),
             trailing: Switch(
-              value: false,
+              value: _isSelectedPatient,
+              onChanged: (value) {
+                setState(() {
+                  _isSelectedPatient = !_isSelectedPatient;
+                });
+              },
+              activeColor: Colors.green,
             ),
           )),
     );
