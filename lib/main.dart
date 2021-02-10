@@ -4,11 +4,9 @@ import 'package:flutter_app/ui/screens/EndShift.dart';
 import 'package:flutter_app/ui/screens/main_screen/main_screen.dart';
 import 'package:flutter_app/ui/screens/new_shift/new_shift.dart';
 import 'package:flutter_app/ui/screens/patients/MyPatients.dart';
-
-import 'TestFirebase.dart';
-
 import 'package:firebase_core/firebase_core.dart';
 
+import 'TestFirebase.dart';
 import 'Testfirebase2.dart';
 
 //import 'package:firebase_core/firebase_core.dart';

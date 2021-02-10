@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'main_screen_button.dart';
 
@@ -17,7 +18,9 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final title = 'MetaVision for Nursing ';
-
+    final _firestore = FirebaseFirestore.instance;
+    int _id = 3;
+    
     return Scaffold(
         appBar: AppBar(
           title: Text(title),
@@ -90,8 +93,21 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
           ),
-        ),
 
+        ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          _firestore.collection('Patients').add({
+            'Name':"Patient $_id",
+            'MRN': "MRN'$_id",
+            'Nurse': 'Dana',
+          });
+          _id++;
+        },
+        tooltip: 'Emergency bell',
+        child: Icon(Icons.add_alert),
+        backgroundColor: Colors.red,
+      ),
     );
   }
 }
