@@ -31,6 +31,9 @@ class PatientCard extends StatelessWidget {
               backgroundColor: Colors.brown.shade800,
               child: item.buildLeftImage(context),
             ),
+            trailing: Switch(
+              value: false,
+            ),
           )),
     );
   }
