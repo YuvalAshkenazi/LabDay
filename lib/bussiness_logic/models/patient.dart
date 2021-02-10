@@ -6,7 +6,7 @@ class Patient {
   DateTime _birthDate;
   Image _picture;
   final String _pictureURL;
-  
+  String nurseId = "";
 
   Patient(this._MRNumber, this._fullName, this._pictureURL) {
     if (_pictureURL.length > 0)

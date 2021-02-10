@@ -9,9 +9,10 @@ class PatientItem implements IListItem {
 
   //final String body;
 
-  PatientItem(this.patient);
+  PatientItem(this.patient) {}
 
-  Widget buildTitle(BuildContext context) => Text(patient.MRNumber);
+  Widget buildTitle(BuildContext context) =>
+      Text(patient.MRNumber + "          "+ "Nurse: " + patient.nurseId);
 
   Widget buildSubtitle(BuildContext context) => Text(patient.FullName);
 
