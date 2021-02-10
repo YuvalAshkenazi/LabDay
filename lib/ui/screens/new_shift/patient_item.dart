@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/bussiness_logic/models/patient.dart';
-import 'package:flutter_app/services/patient_helper.dart';
 import 'package:flutter_app/ui/components/IListItem.dart';
 import 'package:flutter_app/ui/components/patientComponent.dart';
 
@@ -18,5 +17,5 @@ class PatientItem implements IListItem {
 
   Widget buildLeftImage(BuildContext context) =>
       PatientComponent.getPatientAvatar(
-          context, patient.FullName, patient.Picture);
+          context, patient.Id, patient.Picture);
 }

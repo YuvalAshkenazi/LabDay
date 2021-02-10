@@ -3,11 +3,11 @@ import 'package:flutter_app/services/patient_helper.dart';
 
 class PatientComponent {
   static Widget getPatientAvatar(
-      BuildContext context, String fullName, Image patientPicture) {
+      BuildContext context, String id, Image patientPicture) {
     return (Hero(
-        tag: fullName,
+        tag: id,
         child: patientPicture == null
-            ? Text(PatientHelper.getAvatarText(fullName))
+            ? Text(PatientHelper.getAvatarText(id))
             : patientPicture));
   }
 }

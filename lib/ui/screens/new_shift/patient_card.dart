@@ -14,10 +14,15 @@ class PatientStateCard extends StatefulWidget {
 
 class PatientCard extends State<PatientStateCard> {
   PatientItem item;
-
-  PatientCard(this.item);
-
   bool _isSelectedPatient = false;
+
+  PatientCard(this.item)
+  {
+    if (item.patient.nurseId == 'Itai')
+      _isSelectedPatient = true;
+  }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +48,8 @@ class PatientCard extends State<PatientStateCard> {
                 child: item.buildLeftImage(context),
               ),
               trailing: Switch(
+                autofocus: true,
+
                   value: _isSelectedPatient,
                   onChanged: (value) {
                     setState(() {
