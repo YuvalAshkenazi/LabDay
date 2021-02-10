@@ -5,17 +5,17 @@ import 'package:flutter_app/ui/components/IListItem.dart';
 import 'package:flutter_app/ui/components/patientComponent.dart';
 
 class PatientItem implements IListItem {
-  final Patient _patient;
+  final Patient patient;
 
   //final String body;
 
-  PatientItem(this._patient);
+  PatientItem(this.patient);
 
-  Widget buildTitle(BuildContext context) => Text(_patient.MRNumber);
+  Widget buildTitle(BuildContext context) => Text(patient.MRNumber);
 
-  Widget buildSubtitle(BuildContext context) => Text(_patient.FullName);
+  Widget buildSubtitle(BuildContext context) => Text(patient.FullName);
 
   Widget buildLeftImage(BuildContext context) =>
       PatientComponent.getPatientAvatar(
-          context, _patient.FullName, _patient.Picture);
+          context, patient.FullName, patient.Picture);
 }
