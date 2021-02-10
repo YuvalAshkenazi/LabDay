@@ -8,7 +8,7 @@ class Patient {
   DateTime _birthDate;
   Image _picture;
   String _pictureURL;
-  String nurseId = "";
+  String _nurseId = "";
 
   Patient(this._MRNumber, this._fullName, this._pictureURL) {
     if (_pictureURL.length > 0)
@@ -23,9 +23,12 @@ class Patient {
 
   Patient.overloadedConstructor(DocumentSnapshot doc)
   {
+
     _id = doc.id;
     _MRNumber =doc.data()['MRN'];
-    _fullName=doc.data()['Name'];;
+    _fullName=doc.data()['Name'];
+    _nurseId=doc.data()['Nurse'];
+
 
   }
 
@@ -38,4 +41,15 @@ class Patient {
 
   Image get Picture => _picture;
   String get Id =>_id;
+  void set  Nurseid (String nurseName)
+  {
+    print(nurseName);
+    print(_id);
+    DocumentReference record = FirebaseFirestore.instance.collection('Patients').doc(_id);
+    record.update({'Nurse': nurseName})
+    .then((value) => _nurseId = nurseName)
+    .catchError( (error) => print("Failed to update user: $error"));
+    
+  }
+  String get Nurseid => _nurseId;
 }

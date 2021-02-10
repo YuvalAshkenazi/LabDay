@@ -41,7 +41,7 @@ class PatientInformation extends StatelessWidget {
         }
 
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Text("Loading");
+          return LinearProgressIndicator(backgroundColor: Colors.yellow,);
         }
 
         return new ListView(

@@ -18,8 +18,10 @@ class PatientCard extends State<PatientStateCard> {
 
   PatientCard(this.item)
   {
-    if (item.patient.nurseId == 'Itai')
+    if (item.patient.Nurseid == 'Itai') {
+      print('Tron on the switch');
       _isSelectedPatient = true;
+    }
   }
 
 
@@ -55,10 +57,10 @@ class PatientCard extends State<PatientStateCard> {
                     setState(() {
                       _isSelectedPatient = !_isSelectedPatient;
                       if (_isSelectedPatient) {
-                        item.patient.nurseId ="Itai";
+                        item.patient.Nurseid ="Itai";
                       }
                       else {
-                        item.patient.nurseId = "";
+                        item.patient.Nurseid = "";
                       }
                     });
                   },
