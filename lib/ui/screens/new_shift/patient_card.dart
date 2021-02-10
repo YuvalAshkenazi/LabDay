@@ -20,9 +20,8 @@ class PatientCard extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => PatientPage(
-                        patient: Patient('NRN 3', 'Mati Caspi',
-                            'https://www.maariv.co.il/HttpHandlers/ShowImage.ashx?id=322703&w=500&h=380')),
-                  ));
+                        patient: item.patient,
+                  )));
             },
             title: item.buildTitle(context),
             subtitle: item.buildSubtitle(context),
@@ -30,6 +29,9 @@ class PatientCard extends StatelessWidget {
             leading: CircleAvatar(
               backgroundColor: Colors.brown.shade800,
               child: item.buildLeftImage(context),
+            ),
+            trailing: Switch(
+              value: false,
             ),
           )),
     );
