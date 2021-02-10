@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "693027499940",
+    "project_id": "imdlabday",
+    "storage_bucket": "imdlabday.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:693027499940:android:c3438e2c943a6222ab1b31",
+        "android_client_info": {
+          "package_name": "co.yuval.LabDay2021"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "693027499940-jrgebfpkbsdshsocl98ttnlq5ok203fm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATCAlPlAVFYANqK5666ETRr6AUiu4GCpQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "693027499940-jrgebfpkbsdshsocl98ttnlq5ok203fm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
