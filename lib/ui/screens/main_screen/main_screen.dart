@@ -10,7 +10,7 @@ class MainScreen extends StatefulWidget {
   _MainScreenState createState() => _MainScreenState();
 
   /* final Function func1 = () => print('1');*/
-  Function func2 = () => print('2');
+ // Function func2 = () => print('2');
 }
 
 class _MainScreenState extends State<MainScreen> {
@@ -18,9 +18,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     final title = 'MetaVision for Nursing ';
 
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text(title),
         ),
@@ -40,8 +38,9 @@ class _MainScreenState extends State<MainScreen> {
                         text: 'New shift',
                         iconData: FontAwesomeIcons.playCircle,
                         onPressed: () {
+                          Navigator.pushNamed(context, '/NewShift');
                           print('New shift');
-                          setState(() {
+                          /*setState(() {
                             try {
                               //function2 = widget.func2;
                               if (widget.func2 == null)
@@ -51,13 +50,14 @@ class _MainScreenState extends State<MainScreen> {
                             } catch (e) {
                               print('error');
                             }
-                          });
+                          });*/
                         },
                       ),
                       MainScreenButton(
                         text: 'My Patients',
                         iconData: FontAwesomeIcons.addressBook,
                         onPressed: () {
+                          Navigator.pushNamed(context, '/MyPatients');
                           print('My Patients');
                         },
                       ),
@@ -72,12 +72,16 @@ class _MainScreenState extends State<MainScreen> {
                         text: 'All Tasks',
                         iconData: FontAwesomeIcons.tasks,
                         onPressed: () {
+                          Navigator.pushNamed(context, '/AllTasks');
                           print('All Tasks');
                         },
                       ),
                       MainScreenButton(
                         text: 'End Shift',
-                        onPressed: widget.func2,
+                        onPressed: ()
+                        {
+                        Navigator.pushNamed(context, '/EndShift');
+                        },
                         iconData: FontAwesomeIcons.stopCircle,
                       ),
                     ],
@@ -87,7 +91,7 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
         ),
-      ),
+
     );
   }
 }

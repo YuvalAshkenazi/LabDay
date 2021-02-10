@@ -15,9 +15,7 @@ class NewShift extends StatelessWidget {
   Widget build(BuildContext context) {
     final title = 'New Shift';
     //var route = ModalRoute.of(context).settings.name;
-    return MaterialApp(
-      title: title,
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: Text(title),
           leading: IconButton(
@@ -36,8 +34,7 @@ class NewShift extends StatelessWidget {
             return PatientCard(item);
           },
         ),
-      ),
-    );
+      );
   }
 
   List<Patient> LoadPatients() {
