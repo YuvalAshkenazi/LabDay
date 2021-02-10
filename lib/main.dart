@@ -14,7 +14,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    
+
     return MaterialApp(
       title: 'Routes' ,
       // Start the app with the "/" named route. In this case, the app starts
