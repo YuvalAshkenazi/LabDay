@@ -36,6 +36,7 @@ class Patient {
   }
 
   void LoadTasks() {
+    this.tasksList.clear();
     FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
     firestoreInstance
         .collection("Patients")
