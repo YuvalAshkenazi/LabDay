@@ -8,8 +8,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class AddTask extends StatelessWidget {
   AddTask(this.patient);
 
-  final patient;
-
+  final Patient patient;
+  final _firestore = FirebaseFirestore.instance;
+  String _taskDescription = "";
   @override
   Widget build(BuildContext context) {
 
@@ -39,7 +40,7 @@ class AddTask extends StatelessWidget {
               autofocus: true,
               textAlign: TextAlign.center,
               onChanged: (newText) {
-                //TaskTitle = newText;
+                _taskDescription = newText;
               },
             ),
             FlatButton(
@@ -51,7 +52,12 @@ class AddTask extends StatelessWidget {
               ),
               color: Colors.lightBlueAccent,
               onPressed: () {
-                //FirebaseFirestore.instance.collection('Patients').
+                  _firestore.collection('Patients').doc(patient.Id).collection("Tasks").add({
+                    "Handled":false,
+                    "TaskType": "Nurse actions",
+                    "description": _taskDescription,
+                  });
+                  patient.LoadTasks();
                 Navigator.pop(context);
               },
             ),

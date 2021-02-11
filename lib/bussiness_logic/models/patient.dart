@@ -32,10 +32,15 @@ class Patient {
 
     if (doc.data()['Alert'] != null) alertOn = doc.data()['Alert'];
 
+    LoadTasks();
+  }
+
+  void LoadTasks() {
+    this.tasksList.clear();
     FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
     firestoreInstance
         .collection("Patients")
-        .doc(doc.id)
+        .doc(_id)
         .collection("Tasks")
         .get()
         .then((querySnapshot) {
