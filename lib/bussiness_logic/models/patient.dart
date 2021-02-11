@@ -24,7 +24,7 @@ class Patient {
       }
   }
 
-  Patient.overloadedConstructor(DocumentSnapshot doc) {
+  Patient.fromSnapshot(DocumentSnapshot doc) {
     _id = doc.id;
     _MRNumber = doc.data()['MRN'];
     _fullName = doc.data()['Name'];
@@ -43,7 +43,7 @@ class Patient {
         this.tasksList.add(new NurseTask(
             taskIsDone: task.data()["Handled"],
             taskType: task.data()["TaskType"],
-            taskDetails: task.data()["description"]));;
+            taskDetails: task.data()["description"]));
       });
     });
   }
