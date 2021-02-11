@@ -72,11 +72,11 @@ class _MainScreenState extends State<MainScreen> {
                     textBaseline: TextBaseline.alphabetic,
                     children: <Widget>[
                       MainScreenButton(
-                        text: 'All Tasks',
+                        text: 'Alerts list',
                         iconData: FontAwesomeIcons.tasks,
                         onPressed: () {
                           Navigator.pushNamed(context, '/AllTasks');
-                          print('All Tasks');
+                          print('Alerts list');
                         },
                       ),
                       MainScreenButton(

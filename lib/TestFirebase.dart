@@ -68,6 +68,8 @@ class _MyFirebasePageState extends State<MyFirebasePage> {
         child: ListTile(
           title: Text(record.MRN + '-' + record.name),
           trailing: Text(record.isAlert.toString()),
+          tileColor:   record.isAlert  ? Colors.red: Colors.white,
+
           onTap: () => print(record),
         ),
       ),
@@ -78,7 +80,7 @@ class _MyFirebasePageState extends State<MyFirebasePage> {
 class Record {
   final String name;
   final String MRN;
-  final bool isAlert;
+  bool _isAlert = false;
   //final int votes;
   final DocumentReference reference;
 
@@ -87,11 +89,18 @@ class Record {
         assert(map['MRN'] != null),
         name = map['Name'],
         MRN = map['MRN'],
-        isAlert=map['Alert'];
+        _isAlert=map['Alert'];
 
   Record.fromSnapshot(DocumentSnapshot snapshot)
       : this.fromMap(snapshot.data(), reference: snapshot.reference);
 
+  get  isAlert
+  {
+    if (_isAlert !=null)
+      return _isAlert;
+    else
+      return false;
+  }
   @override
   String toString() => "Record<$MRN-$name:$isAlert>";
 }
