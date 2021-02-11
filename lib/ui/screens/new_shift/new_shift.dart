@@ -27,15 +27,20 @@ class NewShift extends StatelessWidget {
 
 }
 
+class PatientInformation extends StatefulWidget {
+  @override
+  _PatientInformationState createState() => _PatientInformationState();
+}
 
-class PatientInformation extends StatelessWidget {
+class _PatientInformationState extends State<PatientInformation> {
+  //Patient _patient;
   @override
   Widget build(BuildContext context) {
     CollectionReference patient = FirebaseFirestore.instance.collection('Patients');
 
     return StreamBuilder<QuerySnapshot>(
       stream: patient.snapshots(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+      builder: ( context,  snapshot) {
         if (snapshot.hasError) {
           return Text('Something went wrong');
         }
@@ -44,13 +49,23 @@ class PatientInformation extends StatelessWidget {
           return LinearProgressIndicator(backgroundColor: Colors.yellow,);
         }
 
-        return new ListView(
-          children: snapshot.data.docs.map((DocumentSnapshot document) {
-            return PatientStateCard( PatientItem(Patient.overloadedConstructor(document)));
-          }).toList()
-        );
+        return _BuildListView(context,snapshot.data.docs);
       },
     );
+  }
+
+  ListView _BuildListView(BuildContext context,List<DocumentSnapshot> snapshot) {
+    return ListView(
+      children: snapshot.map((DocumentSnapshot document) {
+        return _BuildItem(context,document);
+      }).toList()
+    );
+  }
+
+  PatientStateCard _BuildItem(BuildContext context,DocumentSnapshot document) {
+
+    final _patient = Patient.fromSnapshot(document);
+    return PatientStateCard( PatientItem(_patient));
   }
 }
 
