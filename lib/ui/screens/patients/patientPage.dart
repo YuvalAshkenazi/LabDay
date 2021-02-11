@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_app/ui/components/patientComponent.dart';
 import 'package:flutter_app/ui/screens/patients/TaskItem.dart';
 
+import '../AddTask.dart';
 import 'TaskCard.dart';
 
 class PatientPage extends StatelessWidget {
@@ -81,6 +82,16 @@ class PatientPage extends StatelessWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             print("add task");
+            showModalBottomSheet(
+                context: context,
+                isScrollControlled: true,
+                builder: (context) => SingleChildScrollView(
+                    child:Container(
+                      padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                      child: AddTask(patient),
+                    )
+                )
+            );
           },
           tooltip: 'Add task',
           child: Icon(Icons.add),

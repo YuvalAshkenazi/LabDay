@@ -10,6 +10,7 @@ class Patient {
   String _pictureURL;
   String _nurseId = "";
   bool alertOn =false;
+  DocumentReference reference;
 
   Patient(this._MRNumber, this._fullName, this._pictureURL) {
     if (_pictureURL.length > 0)
@@ -22,16 +23,19 @@ class Patient {
       }
   }
 
-  Patient.overloadedConstructor(DocumentSnapshot doc)
+  Patient.fromSnapshot(DocumentSnapshot doc)
   {
 
     _id = doc.id;
     _MRNumber =doc.data()['MRN'];
     _fullName=doc.data()['Name'];
     _nurseId=doc.data()['Nurse'];
+    reference = doc.reference;
 
     if (doc.data()['Alert'] != null)
       alertOn = doc.data()['Alert'];
+
+    print("Patient.overloadedConstructor $_MRNumber alert: $alertOn");
 
     /*CollectionReference tasks = doc.data()['Tasks'];
     if (doc.data()['Tasks'] != null) {
