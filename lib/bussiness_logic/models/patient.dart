@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter_app/bussiness_logic/models/NurseTask.dart';
 
 class Patient {
   String _id;
@@ -9,8 +10,8 @@ class Patient {
   Image _picture;
   String _pictureURL;
   String _nurseId = "";
-  bool alertOn =false;
-  DocumentReference reference;
+  bool alertOn = false;
+  List<NurseTask> tasksList = new List();
 
   Patient(this._MRNumber, this._fullName, this._pictureURL) {
     if (_pictureURL.length > 0)
@@ -23,32 +24,29 @@ class Patient {
       }
   }
 
-  Patient.fromSnapshot(DocumentSnapshot doc)
-  {
-
+  Patient.overloadedConstructor(DocumentSnapshot doc) {
     _id = doc.id;
-    _MRNumber =doc.data()['MRN'];
-    _fullName=doc.data()['Name'];
-    _nurseId=doc.data()['Nurse'];
-    reference = doc.reference;
+    _MRNumber = doc.data()['MRN'];
+    _fullName = doc.data()['Name'];
+    _nurseId = doc.data()['Nurse'];
 
-    if (_fullName == 'Mati Caspi') {
-      _picture = Image(image: AssetImage('assets/matiCaspi.png'));
-      print('Mati caspi picture');
-    }
-    if (doc.data()['Alert'] != null)
-      alertOn = doc.data()['Alert'];
+    if (doc.data()['Alert'] != null) alertOn = doc.data()['Alert'];
 
-    print("Patient.overloadedConstructor $_MRNumber alert: $alertOn");
-
-    /*CollectionReference tasks = doc.data()['Tasks'];
-    if (doc.data()['Tasks'] != null) {
-      print("patients $_fullName has tasks");
-      CollectionReference tasks = doc.data()['Tasks'];
-    }*/
-
+    FirebaseFirestore firestoreInstance = FirebaseFirestore.instance;
+    firestoreInstance
+        .collection("Patients")
+        .doc(doc.id)
+        .collection("Tasks")
+        .get()
+        .then((querySnapshot) {
+      querySnapshot.docs.forEach((task) {
+        this.tasksList.add(new NurseTask(
+            taskIsDone: task.data()["Handled"],
+            taskType: task.data()["TaskType"],
+            taskDetails: task.data()["description"]));;
+      });
+    });
   }
-
 
   String get MRNumber => _MRNumber;
 
@@ -57,16 +55,19 @@ class Patient {
   DateTime get BirthDate => _birthDate;
 
   Image get Picture => _picture;
-  String get Id =>_id;
-  void set  Nurseid (String nurseName)
-  {
+
+  String get Id => _id;
+
+  void set Nurseid(String nurseName) {
     print(nurseName);
     print(_id);
-    DocumentReference record = FirebaseFirestore.instance.collection('Patients').doc(_id);
-    record.update({'Nurse': nurseName})
-    .then((value) => _nurseId = nurseName)
-    .catchError( (error) => print("Failed to update user: $error"));
-    
+    DocumentReference record =
+        FirebaseFirestore.instance.collection('Patients').doc(_id);
+    record
+        .update({'Nurse': nurseName})
+        .then((value) => _nurseId = nurseName)
+        .catchError((error) => print("Failed to update user: $error"));
   }
+
   String get Nurseid => _nurseId;
 }

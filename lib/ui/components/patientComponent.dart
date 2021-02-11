@@ -13,6 +13,4 @@ class PatientComponent {
             ? Text(PatientHelper.getAvatarText(id))
             : patientPicture)));
   }
-
-
 }
