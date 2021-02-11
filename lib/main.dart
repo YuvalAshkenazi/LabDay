@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         //'/': (context) => FirestoreExampleApp(),
         '/NewShift': (context) => NewShift(),
         '/EndShift': (context) => EndShift(),
-        '/AllTasks': (context) => AllTasks(),
+        '/AllTasks': (context) => MyFirebasePage(),
         '/MyPatients': (context) => MyPatients(),
       },
     );
