@@ -19,12 +19,10 @@ class PatientCard extends State<PatientStateCard> {
   PatientCard(this.item)
   {
     if (item.patient.Nurseid == 'Itai') {
-      print('Tron on the switch');
+      print('Turn on the switch');
       _isSelectedPatient = true;
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +45,7 @@ class PatientCard extends State<PatientStateCard> {
               subtitle: item.buildSubtitle(context),
               //value: false,
               leading: CircleAvatar(
-                backgroundColor: Colors.brown.shade800,
+                backgroundColor: Colors.red.shade800,
                 child: item.buildLeftImage(context),
               ),
               trailing: Switch(

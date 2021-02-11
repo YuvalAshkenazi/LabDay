@@ -3,10 +3,10 @@ import 'package:flutter/cupertino.dart';
 import 'INurseTask.dart';
 
 class NurseTask implements INurseTask {
-  NurseTask({@required this.taskName, @required this.taskDetails});
+  NurseTask({@required this.taskIsDone, @required this.taskDetails, this.taskType});
 
-  String taskName;
   String taskDetails;
+  String taskType;
   bool taskIsDone = false;
 
   @override
@@ -23,12 +23,7 @@ class NurseTask implements INurseTask {
 
   @override
   String getTaskHeader() {
-    return (taskName);
-  }
-
-  @override
-  TaskType taskType() {
-    return (TaskType.task);
+    return (taskType);
   }
 
   @override

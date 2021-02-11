@@ -91,12 +91,6 @@ class PatientPage extends StatelessWidget {
   }
 
   List<INurseTask> loadTasks() {
-    List<INurseTask> nurseTasks = List<INurseTask>();
-    nurseTasks
-        .add(NurseTask(taskName: 'Dose 1', taskDetails: 'give dose at 10:00'));
-    nurseTasks.add(NurseTask(taskName: 'Task 1', taskDetails: 'Replace xx'));
-    nurseTasks.add(NurseTask(taskName: 'Task 2', taskDetails: 'help joe'));
-
-    return nurseTasks;
+    return patient.tasksList;
   }
 }
