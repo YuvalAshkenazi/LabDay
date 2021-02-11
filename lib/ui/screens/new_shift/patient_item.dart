@@ -13,7 +13,7 @@ class PatientItem implements IListItem {
   Widget buildTitle(BuildContext context) =>
       Text(patient.MRNumber + "          "+ "Nurse: " + patient.Nurseid  );
 
-  Widget buildSubtitle(BuildContext context) => Text(patient.FullName + "          "+ "Tasks:"  + patient.tasksList.length.toString());
+  Widget buildSubtitle(BuildContext context) => Text(patient.FullName);
 
   Widget buildLeftImage(BuildContext context) =>
       PatientComponent.getPatientAvatar(
