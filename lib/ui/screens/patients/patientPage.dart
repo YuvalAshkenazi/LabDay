@@ -23,7 +23,7 @@ class PatientPage extends StatelessWidget {
       title: title,
       home: Scaffold(
         appBar: AppBar(
-          title: Text(title),
+          title: Text(title ),
           leading: IconButton(
             icon: Icon(Icons.arrow_back, color: Colors.white),
             onPressed: () => Navigator.of(context).pop(),
@@ -36,9 +36,17 @@ class PatientPage extends StatelessWidget {
                 children: [
                   Container(
                     width: 200,
-                    alignment: Alignment.topLeft,
-                    child: PatientComponent.getPatientAvatar(
-                        context, patient.FullName, patient.Picture,patient.alertOn),
+                    alignment: Alignment.bottomCenter,
+                    child: CircleAvatar(
+                      radius: 90,
+                      child: Container(
+                        alignment: Alignment.center,
+                        width: 150,
+
+                        child: PatientComponent.getPatientAvatar(
+                            context, patient.FullName, patient.Picture,patient.alertOn),
+                      ),
+                    ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -101,6 +109,10 @@ class PatientPage extends StatelessWidget {
     );
   }
 
+  Widget patientPic (Patient patient)
+  {
+
+  }
   List<INurseTask> loadTasks() {
     return patient.tasksList;
   }

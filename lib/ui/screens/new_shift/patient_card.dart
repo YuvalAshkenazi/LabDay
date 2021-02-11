@@ -45,7 +45,7 @@ class PatientCard extends State<PatientStateCard> {
               subtitle: item.buildSubtitle(context),
               //value: false,
               leading: CircleAvatar(
-                backgroundColor: Colors.red.shade800,
+                backgroundColor: Colors.brown.shade700,
                 child: item.buildLeftImage(context),
               ),
               trailing: Switch(
@@ -55,12 +55,11 @@ class PatientCard extends State<PatientStateCard> {
                   onChanged: (value) {
                     setState(() {
                       _isSelectedPatient = !_isSelectedPatient;
-                      if (_isSelectedPatient) {
-                        item.patient.Nurseid ="Itai";
-                      }
-                      else {
+                      if (_isSelectedPatient)
+                        item.patient.Nurseid = "Itai";
+                      else
                         item.patient.Nurseid = "";
-                      }
+
                     });
                   },
                   activeColor: Colors.green,
