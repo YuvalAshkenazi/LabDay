@@ -32,6 +32,10 @@ class Patient {
     _nurseId=doc.data()['Nurse'];
     reference = doc.reference;
 
+    if (_fullName == 'Mati Caspi') {
+      _picture = Image(image: AssetImage('assets/matiCaspi.png'));
+      print('Mati caspi picture');
+    }
     if (doc.data()['Alert'] != null)
       alertOn = doc.data()['Alert'];
 

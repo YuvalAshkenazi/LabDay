@@ -39,7 +39,7 @@ class AddTask extends StatelessWidget {
               autofocus: true,
               textAlign: TextAlign.center,
               onChanged: (newText) {
-                newTaskTitle = newText;
+                //TaskTitle = newText;
               },
             ),
             FlatButton(
