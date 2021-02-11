@@ -43,7 +43,7 @@ class Patient {
         this.tasksList.add(new NurseTask(
             taskIsDone: task.data()["Handled"],
             taskType: task.data()["TaskType"],
-            taskDetails: task.data()["description"]));
+            taskDetails: task.data()["description"]));;
       });
     });
   }
