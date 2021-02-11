@@ -9,6 +9,7 @@ class Patient {
   Image _picture;
   String _pictureURL;
   String _nurseId = "";
+  bool alertOn =false;
 
   Patient(this._MRNumber, this._fullName, this._pictureURL) {
     if (_pictureURL.length > 0)
@@ -29,6 +30,14 @@ class Patient {
     _fullName=doc.data()['Name'];
     _nurseId=doc.data()['Nurse'];
 
+    if (doc.data()['Alert'] != null)
+      alertOn = doc.data()['Alert'];
+
+    /*CollectionReference tasks = doc.data()['Tasks'];
+    if (doc.data()['Tasks'] != null) {
+      print("patients $_fullName has tasks");
+      CollectionReference tasks = doc.data()['Tasks'];
+    }*/
 
   }
 

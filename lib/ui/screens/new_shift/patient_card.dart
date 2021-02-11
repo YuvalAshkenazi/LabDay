@@ -42,6 +42,7 @@ class PatientCard extends State<PatientStateCard> {
                               patient: item.patient,
                             )));
               },
+
               title: item.buildTitle(context),
               subtitle: item.buildSubtitle(context),
               //value: false,

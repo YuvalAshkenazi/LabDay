@@ -17,5 +17,5 @@ class PatientItem implements IListItem {
 
   Widget buildLeftImage(BuildContext context) =>
       PatientComponent.getPatientAvatar(
-          context, patient.Id, patient.Picture);
+          context, patient.Id, patient.Picture, patient.alertOn);
 }

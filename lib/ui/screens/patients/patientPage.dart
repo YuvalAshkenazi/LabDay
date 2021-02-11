@@ -37,7 +37,7 @@ class PatientPage extends StatelessWidget {
                     width: 200,
                     alignment: Alignment.topLeft,
                     child: PatientComponent.getPatientAvatar(
-                        context, patient.FullName, patient.Picture),
+                        context, patient.FullName, patient.Picture,patient.alertOn),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,6 +77,14 @@ class PatientPage extends StatelessWidget {
               ),
             ]),
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            print("add task");
+          },
+          tooltip: 'Add task',
+          child: Icon(Icons.add),
+          backgroundColor: Colors.lightBlueAccent,
         ),
       ),
     );
